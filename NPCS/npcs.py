@@ -1,0 +1,3 @@
+
+class NPCs(observable):
+    
