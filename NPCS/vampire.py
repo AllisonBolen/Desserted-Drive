@@ -41,4 +41,4 @@ ChocolateBars. Start with 100-200 HP. '''
     # helper funcs
     def genAttack(self):
         self.attack = randint(10, 20)
-        return attack
+        return self.attack

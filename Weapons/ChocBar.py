@@ -1,3 +1,4 @@
+from random impirt *
 
 class ChocolateBars(object):
 
@@ -22,4 +23,4 @@ class ChocolateBars(object):
 
     def genModif(self):
         self.modif = uniform(2, 2.4)
-        return modif
+        return self.modif
