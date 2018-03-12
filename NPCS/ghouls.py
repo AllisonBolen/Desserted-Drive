@@ -41,4 +41,5 @@ Start with 40-80 HP. '''
 
     #helper funcs
     def genAttack(self):
-        return randint(15, 30)
+        self.attack = randint(15, 30)
+        return attack

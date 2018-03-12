@@ -39,4 +39,5 @@ They are not harmed by ChocolateBars or SourStraws. Start with 200 HP. '''
 
     #helper funcs
     def genAttack(self):
-        return randint(0, 40)
+        self.attack = randint(0, 40)
+        return attack

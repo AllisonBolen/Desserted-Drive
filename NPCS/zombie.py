@@ -42,4 +42,5 @@ twice the number of points from an attack. Start with between 50 and 100 HP.'''
 
     #helper funcs
     def genAttack(self):
-        return randint(15, 30)
+        self.attack = randint(0, 10)
+        return attack

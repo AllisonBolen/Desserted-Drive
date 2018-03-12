@@ -10,6 +10,7 @@ Persons have 100 health and are not harmed by your attacks.'''
         self.hp = 100
         self.candy = ['SourStraws','ChocolateBars','NerdBombs'] # random choice to give player maybe?
         self.special = []
+
     # getters
     def getAttack(self):
         return self.attack
