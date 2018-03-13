@@ -1,3 +1,7 @@
 # __init__.py
-from ChocolateBars import *
+__all__ = ['ChocolateBars','HersheyKisses', 'NerdBomb', 'SourStraws']
+# from ChocolateBars import *
+# from HersheyKisses import *
+# from NerdBomb import *
+# from SourStraws import *
 # etc...

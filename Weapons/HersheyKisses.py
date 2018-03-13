@@ -1,6 +1,6 @@
 from random import *
 
-class hKiss(object):
+class HersheyKisses(object):
 
     ''' HersheyKisses are the basic weapon. No one ever runs out
     of HersheyKisses. Unfortunately they have an attack modifier of 1. '''

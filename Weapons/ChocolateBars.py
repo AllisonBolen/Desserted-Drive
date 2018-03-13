@@ -1,4 +1,4 @@
-from random impirt *
+from random import *
 
 class ChocolateBars(object):
 
