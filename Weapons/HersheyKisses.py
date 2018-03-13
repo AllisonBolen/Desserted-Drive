@@ -8,9 +8,13 @@ class HersheyKisses(object):
     def __init__(self):
         self.modif = 1
         self.uses = 1000000000 # million
-
+        self.name = 'HersheyKisses'
+        
     def getUses(self):
         return self.uses
+
+    def getName(self):
+        return self.name
 
     def getModif(self):
         return self.modif

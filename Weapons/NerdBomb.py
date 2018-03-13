@@ -8,9 +8,12 @@ class NerdBomb(object):
     def __init__(self):
         self.modif = uniform(3.5, 5)
         self.uses = 1
-
+        self.name = 'NerdBomb'
     def getUses(self):
         return self.uses
+
+    def getName(self):
+        return self.name
 
     def getModif(self):
         return self.modif

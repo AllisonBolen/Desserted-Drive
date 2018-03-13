@@ -1,6 +1,7 @@
 from NPCS import *
 from Weapons import *
-
+import Home
+import Player
 def main():
     #weapons
     cb = ChocolateBars.ChocolateBars()
@@ -28,6 +29,11 @@ def main():
     print(zb.genAttack())
 
     print(pr.getHP())
+
+    # home
+    hm = Home.Home()
+    p = Player.Player()
+
 
 if __name__ == "__main__":
     main()

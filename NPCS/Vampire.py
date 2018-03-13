@@ -1,6 +1,7 @@
-
 from random import *
 from Observable import *
+
+
 class Vampire(Observable):
 
     ''' Vampires attack at a rate of 10-20 HP per turn. They are not harmed by
@@ -9,7 +10,7 @@ class Vampire(Observable):
     def __init__(self):
         self.attack = randint(10, 20)
         self.hp = randint(100, 200)
-        self.candy = ['ChocolateBars'] # candy its not hurt by
+        self.candy = ['ChocolateBars']  # candy its not hurt by
         self.special = []
 
     # getters

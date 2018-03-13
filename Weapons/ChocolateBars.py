@@ -1,5 +1,6 @@
 from random import *
 
+
 class ChocolateBars(object):
 
     ''' ChocolateBars modify the players attack by between 2 - 2.4.
@@ -8,6 +9,10 @@ class ChocolateBars(object):
     def __init__(self):
         self.modif = uniform(2, 2.4)
         self.uses = 4
+        self.name = 'ChocolateBars'
+
+    def getName(self):
+        return self.name
 
     def getUses(self):
         return self.uses

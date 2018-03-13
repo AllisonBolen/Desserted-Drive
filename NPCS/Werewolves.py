@@ -1,5 +1,7 @@
 from random import *
 from Observable import *
+
+
 class Werewolves(Observable):
 
     ''' Werewolves attack at a rate of 0-40 HP per turn.
@@ -8,7 +10,7 @@ class Werewolves(Observable):
     def __init__(self):
         self.attack = randint(0, 40)
         self.hp = 200
-        self.candy = ['ChocolateBars', 'SourStraws'] # candy its not hurt by
+        self.candy = ['ChocolateBars', 'SourStraws']  # candy its not hurt by
         self.special = []
 
     # getters
@@ -37,7 +39,7 @@ class Werewolves(Observable):
     def setCandy(self, c):
         self.candy = c
 
-    #helper funcs
+    # helper funcs
     def genAttack(self):
         self.attack = randint(0, 40)
         return self.attack
