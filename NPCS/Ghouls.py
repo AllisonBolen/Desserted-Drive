@@ -9,7 +9,7 @@ class Ghouls(Observable):
 
     def __init__(self):
         self.attack = randint(15, 30)
-        self.hp = ranint(40, 80)
+        self.hp = randint(40, 80)
         self.candy = [] # candy its not hurt by
         self.special = ['NerdBombs']
 

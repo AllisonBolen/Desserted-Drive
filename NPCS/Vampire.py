@@ -8,7 +8,7 @@ class Vampire(Observable):
 
     def __init__(self):
         self.attack = randint(10, 20)
-        self.hp = ranint(100, 200)
+        self.hp = randint(100, 200)
         self.candy = ['ChocolateBars'] # candy its not hurt by
         self.special = []
 

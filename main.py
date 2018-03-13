@@ -8,6 +8,26 @@ def main():
     hk = HersheyKisses.HersheyKisses()
     ss = SourStraws.SourStraws()
 
-    # mess with weapons 
+    # mess with weapons
+    print(cb.getUses())
+    print(nb.getUses())
+    print(hk.getUses())
+    print(ss.getUses())
+
+    # monsters
+    gh = Ghouls.Ghouls()
+    pr = Person.Person()
+    vp = Vampire.Vampire()
+    ww = Werewolves.Werewolves()
+    zb = Zombie.Zombie()
+
+    # mess with monsters
+    print(gh.genAttack())
+    print(vp.genAttack())
+    print(ww.genAttack())
+    print(zb.genAttack())
+
+    print(pr.getHP())
+
 if __name__ == "__main__":
     main()

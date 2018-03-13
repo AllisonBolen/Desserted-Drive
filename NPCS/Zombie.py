@@ -11,7 +11,7 @@ class Zombie(Observable):
 
     def __init__(self):
         self.attack = randint(0, 10)
-        self.hp = ranint(50, 100)
+        self.hp = randint(50, 100)
         self.candy = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBombs'] # candy its not hurt by
         self.special = ['SourStraws']
 
