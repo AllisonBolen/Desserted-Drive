@@ -1,9 +1,9 @@
 from random import *
+from Observable import *
+class Werewolves(Observable):
 
-class Werewolves(observable):
-
-''' Werewolves attack at a rate of 0-40 HP per turn.
-They are not harmed by ChocolateBars or SourStraws. Start with 200 HP. '''
+    ''' Werewolves attack at a rate of 0-40 HP per turn.
+    They are not harmed by ChocolateBars or SourStraws. Start with 200 HP. '''
 
     def __init__(self):
         self.attack = randint(0, 40)

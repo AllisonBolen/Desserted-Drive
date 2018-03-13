@@ -1,11 +1,11 @@
 
 from random import *
+from Observable import *
+class Ghouls(Observable):
 
-class Ghouls(observable):
-
-''' Ghouls attack at a rate of 15-30 HP per turn. They are harmed by
-all weapons, but receive 5X the attackers attack if attacked with NerdBombs.
-Start with 40-80 HP. '''
+    ''' Ghouls attack at a rate of 15-30 HP per turn. They are harmed by
+    all weapons, but receive 5X the attackers attack if attacked with NerdBombs.
+    Start with 40-80 HP. '''
 
     def __init__(self):
         self.attack = randint(15, 30)

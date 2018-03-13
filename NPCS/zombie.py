@@ -1,12 +1,13 @@
 
 
 from random import *
+from Observable import *
 
-class Zombie(observable):
+class Zombie(Observable):
 
-'''Zombies attack you at a rate of 0-10 HP per turn.
-Zombies are harmed by any weapon, but if attacked with SourStraws lose
-twice the number of points from an attack. Start with between 50 and 100 HP.'''
+    '''Zombies attack you at a rate of 0-10 HP per turn.
+    Zombies are harmed by any weapon, but if attacked with SourStraws lose
+    twice the number of points from an attack. Start with between 50 and 100 HP.'''
 
     def __init__(self):
         self.attack = randint(0, 10)

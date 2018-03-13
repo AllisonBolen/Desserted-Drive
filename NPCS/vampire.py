@@ -1,10 +1,10 @@
 
 from random import *
+from Observable import *
+class Vampire(Observable):
 
-class Vampire(observable):
-
-''' Vampires attack at a rate of 10-20 HP per turn. They are not harmed by
-ChocolateBars. Start with 100-200 HP. '''
+    ''' Vampires attack at a rate of 10-20 HP per turn. They are not harmed by
+    ChocolateBars. Start with 100-200 HP. '''
 
     def __init__(self):
         self.attack = randint(10, 20)
