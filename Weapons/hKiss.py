@@ -7,7 +7,7 @@ class hKiss(object):
 
     def __init__(self):
         self.modif = 1
-        self.uses = 4
+        self.uses = 1000000000 # million
 
     def getUses(self):
         return self.uses

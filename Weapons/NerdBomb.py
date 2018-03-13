@@ -7,7 +7,7 @@ class NerdBombs(object):
 
     def __init__(self):
         self.modif = uniform(3.5, 5)
-        self.uses = 4
+        self.uses = 1
 
     def getUses(self):
         return self.uses

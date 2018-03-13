@@ -6,8 +6,8 @@ class SourStraws(object):
     They can be used twice. '''
 
     def __init__(self):
-        self.modif = uniform(1.5, 1.75)
-        self.uses = 4
+        self.modif = uniform(1, 1.75)
+        self.uses = 2
 
     def getUses(self):
         return self.uses
@@ -22,5 +22,5 @@ class SourStraws(object):
         self.modif = modif
 
     def genModif(self):
-        self.modif = uniform(1.5, 1.75)
+        self.modif = uniform(1, 1.75)
         return self.modif
