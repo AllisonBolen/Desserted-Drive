@@ -8,5 +8,6 @@ def main():
     hk = HersheyKisses.HersheyKisses()
     ss = SourStraws.SourStraws()
 
+    # mess with weapons 
 if __name__ == "__main__":
     main()
