@@ -2,6 +2,7 @@ from NPCS import *
 from Weapons import *
 import Home
 import Player
+
 def main():
     #weapons
     cb = ChocolateBars.ChocolateBars()
@@ -21,14 +22,12 @@ def main():
     vp = Vampire.Vampire()
     ww = Werewolves.Werewolves()
     zb = Zombie.Zombie()
+    monstList = [gh,pr,vp,ww,zb]
 
     # mess with monsters
-    print(gh.genAttack())
-    print(vp.genAttack())
-    print(ww.genAttack())
-    print(zb.genAttack())
-
-    print(pr.getHP())
+    for mst in monstList:
+        hp = mst.getHP()
+        print(f'Health: {hp}')
 
     # home
     hm = Home.Home()
