@@ -27,9 +27,9 @@ def main():
     monstList = [gh,pr,vp,ww,zb]
     for mst in monstList:
         hp = mst.getHP()
-        print(f'Health: {hp}')
+        print('Health: {}'.format(hp))
         at = mst.genAttack()
-        print(f'attack gend: {at}')
+        print('attack gend: {}'.format(at))
     # home
     hm = Home.Home()
     p = Player.Player()
