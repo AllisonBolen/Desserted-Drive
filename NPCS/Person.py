@@ -14,6 +14,6 @@ class Person(NPC):
         self.hp = 100
         self.candy = ['SourStraws','ChocolateBars','NerdBombs'] # random choice to give player maybe?
         self.special = []
-
+        self.name = "Person"
     def genAttack(self):
         return self.attack

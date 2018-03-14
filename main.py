@@ -42,6 +42,7 @@ def main():
     n = Neighborhood.Neighborhood(4)
     numM = n.getCount()
     print('Num monsters: {}'.format(numM))
+    
 
 if __name__ == "__main__":
     main()

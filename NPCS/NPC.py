@@ -11,6 +11,8 @@ class NPC(Observable):
         self.hp = 0
         self.candy = []  # candy its not hurt by
         self.special = []
+        self.name = ""
+        self.alive = True
 
     # getters
     def getAttack(self):
@@ -37,6 +39,12 @@ class NPC(Observable):
 
     def setCandy(self, c):
         self.candy = c
+
+    def getAlive(self):
+        return self.alive
+
+    def setAlive(self, state):
+        self.alive = state
 
     # helper funcs
     def genAttack(self):

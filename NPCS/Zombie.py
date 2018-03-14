@@ -14,7 +14,8 @@ class Zombie(NPC):
         self.hp = randint(50, 100)
         self.candy = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBomb'] # candy its not hurt by
         self.special = ['SourStraws']
-
+        self.name = "Zombie"
+        
     # helper funcs
     def genAttack(self):
         self.attack = randint(0, 10)

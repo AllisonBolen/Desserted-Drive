@@ -14,6 +14,7 @@ class Ghouls(NPC):
         self.hp = randint(40, 80)
         self.candy = [] # candy its not hurt by
         self.special = ['NerdBombs']
+        self.name = "Ghouls"
 
     #helper funcs
     def genAttack(self):

@@ -13,6 +13,7 @@ class Vampire(NPC):
         self.hp = randint(100, 200)
         self.candy = ['ChocolateBars']  # candy its not hurt by
         self.special = []
+        self.name = "Vampire"
 
     # helper funcs
     def genAttack(self):

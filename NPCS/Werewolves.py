@@ -13,6 +13,7 @@ class Werewolves(NPC):
         self.hp = 200
         self.candy = ['ChocolateBars', 'SourStraws']  # candy its not hurt by
         self.special = []
+        self.name = "Werewolves"
 
     # helper funcs
     def genAttack(self):
