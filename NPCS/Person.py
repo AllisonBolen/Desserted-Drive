@@ -9,7 +9,11 @@ class Person(NPC):
     Persons have 100 health and are not harmed by your attacks.'''
 
     def __init__(self):
+        NPC.__init__(self)
         self.attack = -1
         self.hp = 100
         self.candy = ['SourStraws','ChocolateBars','NerdBombs'] # random choice to give player maybe?
         self.special = []
+
+    def genAttack(self):
+        return self.attack

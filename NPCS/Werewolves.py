@@ -8,6 +8,7 @@ class Werewolves(NPC):
     They are not harmed by ChocolateBars or SourStraws. Start with 200 HP. '''
 
     def __init__(self):
+        NPC.__init__(self)
         self.attack = randint(0, 40)
         self.hp = 200
         self.candy = ['ChocolateBars', 'SourStraws']  # candy its not hurt by

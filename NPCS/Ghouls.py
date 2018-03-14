@@ -9,6 +9,7 @@ class Ghouls(NPC):
     Start with 40-80 HP. '''
 
     def __init__(self):
+        NPC.__init__(self)
         self.attack = randint(15, 30)
         self.hp = randint(40, 80)
         self.candy = [] # candy its not hurt by

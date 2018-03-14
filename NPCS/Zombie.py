@@ -9,6 +9,7 @@ class Zombie(NPC):
     twice the number of points from an attack. Start with between 50 and 100 HP. '''
 
     def __init__(self):
+        NPC.__init__(self)
         self.attack = randint(0, 10)
         self.hp = randint(50, 100)
         self.candy = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBomb'] # candy its not hurt by
