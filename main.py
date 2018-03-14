@@ -39,10 +39,19 @@ def main():
         n = w.getName()
         m = w.genModif()
         print('weapon: {name}, modifier: {modif}'.format(name=n, modif=m))
+
     n = Neighborhood.Neighborhood(4)
-    numM = n.getCount()
+
+    numM = n.getCount() # neighborhodd total
     print('Num monsters: {}'.format(numM))
+
+    print(hm.getMonsters())
+    hmnumM = hm.getNumMonsters()
+    print('before kill: {}'.format(hmnumM))
+    hm.killMonster(1)
     
+    hmnumM = hm.getNumMonsters()
+    print('after Kill kill: {}'.format(hmnumM))
 
 if __name__ == "__main__":
     main()

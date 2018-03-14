@@ -22,7 +22,7 @@ class Home(Observable, Observer):
         numMonst = randint(0,10)
         for m in range(0, numMonst):
             popList = ['Ghouls', 'Person', 'Vampire', 'Zombie', 'Werewolves']
-            selected = randint(0, 3)
+            selected = randint(0, 4)
         #Observable.add_observer(m)
             monst.append(popList[selected])
         return monst
@@ -31,4 +31,11 @@ class Home(Observable, Observer):
         return self.monsters
 
     def getNumMonsters(self):
-        return len(self.monsters)
+        count = 0
+        for monst in self.monsters:
+            if monst not in [ "Person" ]:
+                count = count + 1
+        return count
+
+    def killMonster(self, monstIndex):
+        del self.monsters[monstIndex]
