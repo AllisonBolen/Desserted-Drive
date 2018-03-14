@@ -26,3 +26,9 @@ class Home(Observable, Observer):
         #Observable.add_observer(m)
             monst.append(popList[selected])
         return monst
+
+    def getMonsters(self):
+        return self.monsters
+
+    def getNumMonsters(self):
+        return len(self.monsters)

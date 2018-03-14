@@ -2,6 +2,7 @@ from NPCS import *
 from Weapons import *
 import Home
 import Player
+import Neighborhood
 
 def main():
     #weapons
@@ -38,7 +39,9 @@ def main():
         n = w.getName()
         m = w.genModif()
         print('weapon: {name}, modifier: {modif}'.format(name=n, modif=m))
-
+    n = Neighborhood.Neighborhood(4)
+    numM = n.getCount()
+    print('Num monsters: {}'.format(numM))
 
 if __name__ == "__main__":
     main()
