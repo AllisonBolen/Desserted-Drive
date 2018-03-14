@@ -12,7 +12,9 @@ class Home(Observable, Observer):
     living within, and change the population if notified of some event.'''
 
     def __init__(self):
-        monsters = self.populateHouse()
+        Observable.__init__(self)
+        Observer.__init__(self)
+        self.monsters = self.populateHouse()
         # list of Observable stuff
 
     def populateHouse(self):
@@ -21,5 +23,6 @@ class Home(Observable, Observer):
         for m in range(0, numMonst):
             popList = ['Ghouls', 'Person', 'Vampire', 'Zombie', 'Werewolves']
             selected = randint(0, 3)
+        #Observable.add_observer(m)
             monst.append(popList[selected])
         return monst

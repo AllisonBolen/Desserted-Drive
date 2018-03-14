@@ -9,11 +9,9 @@ class Player(object):
     to your inventory when you are created.'''
 
     def __init__(self):
-        weapons = self.populateWeapons()
-        for i in weapons:
-            print(i.getName())
-        hp = randint(100, 125)
-        attack = randint(10, 20)
+        self.inventory = self.populateWeapons()
+        self.hp = randint(100, 125)
+        self.attack = randint(10, 20)
 
     def populateWeapons(self):
         hk = HersheyKisses.HersheyKisses() # always have hks
@@ -36,10 +34,6 @@ class Player(object):
         self.attack = randint(10,20)
         return self.attack
 
-    def doAttack(self, choice):
-        # choice = input("Please pick a weapon to use: ")
-        # if(choice is in )
-        x = 0
     # getters
     def getAttack(self):
         return self.attack
@@ -53,3 +47,6 @@ class Player(object):
 
     def setHP(self, hp):
         self.hp = hp
+
+    def getInventory(self):
+        return self.inventory

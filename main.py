@@ -34,6 +34,11 @@ def main():
     hm = Home.Home()
     p = Player.Player()
 
+    for w in p.getInventory():
+        n = w.getName()
+        m = w.genModif()
+        print('weapon: {name}, modifier: {modif}'.format(name=n, modif=m))
+
 
 if __name__ == "__main__":
     main()
