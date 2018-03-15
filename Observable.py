@@ -13,3 +13,7 @@ class Observable(object):
 
         def remove_all_observers(self):
                 self.observers = []
+
+        def update(self):
+                for observer in self.observers:
+                        observer.update()
