@@ -45,13 +45,19 @@ def main():
     numM = n.getCount() # neighborhodd total
     print('Num monsters: {}'.format(numM))
 
-    print(hm.getMonsters())
-    hmnumM = hm.getNumMonsters()
+    print(n.getGrid()[1][1].getMonsters())
+    hmnumM = n.getGrid()[1][1].getNumMonsters()
     print('before kill: {}'.format(hmnumM))
-    hm.killMonster(1)
+    n.getGrid()[1][1].killMonster(1)
 
-    hmnumM = hm.getNumMonsters()
+    hmnumM = n.getGrid()[1][1].getNumMonsters()
     print('after Kill kill: {}'.format(hmnumM))
+
+    print(n.getGrid()[1][1].getMonsters())
+
+    numM = n.getCount() # neighborhodd total
+    print('Num monsters: {}'.format(numM))
+
 
 
 if __name__ == "__main__":

@@ -57,3 +57,13 @@ class Home(Observable, Observer):
 
     def killMonster(self, monstIndex):
         del self.monsters[monstIndex]
+        self.addPerson(monstIndex)
+        self.update()
+
+    def addPerson(self, indx):
+        npr = Person.Person()
+        npr.add_observer(self)
+        self.monsters.insert(indx, npr)
+
+    def update(self):
+        self.notify()

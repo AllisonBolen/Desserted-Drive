@@ -25,7 +25,6 @@ class Neighborhood(Observer):
             neigh.append(hood)
         return neigh
 
-
     def getCount(self):
         return self.count
 
@@ -37,3 +36,6 @@ class Neighborhood(Observer):
 
     def setGrid(self, g):
         self.grid = g
+
+    def update(self):
+        self.count = self.count - 1
