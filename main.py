@@ -49,9 +49,10 @@ def main():
     hmnumM = hm.getNumMonsters()
     print('before kill: {}'.format(hmnumM))
     hm.killMonster(1)
-    
+
     hmnumM = hm.getNumMonsters()
     print('after Kill kill: {}'.format(hmnumM))
+
 
 if __name__ == "__main__":
     main()

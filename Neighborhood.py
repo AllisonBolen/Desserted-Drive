@@ -21,6 +21,7 @@ class Neighborhood(Observer):
                 newHome = Home()
                 self.count = self.count + newHome.getNumMonsters()
                 hood.append(newHome)
+                newHome.add_observer(self)
             neigh.append(hood)
         return neigh
 
