@@ -25,20 +25,24 @@ class Home(Observable, Observer):
             selected = randint(0, 4)
             if popList[selected] == 'Ghouls':
                 gh = Ghouls.Ghouls()
+                gh.add_observer(self)
                 monst.append(gh)
             elif popList[selected] == 'Person':
                 pr = Person.Person()
+                pr.add_observer(self)
                 monst.append(pr)
             elif popList[selected] == 'Vampire':
                 vm = Vampire.Vampire()
+                vm.add_observer(self)
                 monst.append(vm)
             elif popList[selected] == 'Zombie':
                 zm = Zombie.Zombie()
+                zm.add_observer(self)
                 monst.append(zm)
             elif popList[selected] == 'Werewolves':
                 ww = Werewolves.Werewolves()
+                ww.add_observer(self)
                 monst.append(ww)
-        #Observable.add_observer(m)
         return monst
 
     def getMonsters(self):

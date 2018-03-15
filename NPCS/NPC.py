@@ -7,6 +7,7 @@ class NPC(Observable):
     ''' Base class '''
 
     def __init__(self):
+        Observable.__init__(self)
         self.attack = 0
         self.hp = 0
         self.candy = []  # candy its not hurt by
