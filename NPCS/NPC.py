@@ -27,6 +27,8 @@ class NPC(Observable):
     def getSpecial(self):
         return self.special
 
+    def getName(self):
+        return self.name
     # setters
     def setSpecial(self, special):
         self.special = special

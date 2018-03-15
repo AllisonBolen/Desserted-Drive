@@ -1,7 +1,7 @@
 from random import *
 from Observable import *
 from Observer import *
-
+from NPCS import *
 
 class Home(Observable, Observer):
 
@@ -23,8 +23,22 @@ class Home(Observable, Observer):
         for m in range(0, numMonst):
             popList = ['Ghouls', 'Person', 'Vampire', 'Zombie', 'Werewolves']
             selected = randint(0, 4)
+            if popList[selected] == 'Ghouls':
+                gh = Ghouls.Ghouls()
+                monst.append(gh)
+            elif popList[selected] == 'Person':
+                pr = Person.Person()
+                monst.append(pr)
+            elif popList[selected] == 'Vampire':
+                vm = Vampire.Vampire()
+                monst.append(vm)
+            elif popList[selected] == 'Zombie':
+                zm = Zombie.Zombie()
+                monst.append(zm)
+            elif popList[selected] == 'Werewolves':
+                ww = Werewolves.Werewolves()
+                monst.append(ww)
         #Observable.add_observer(m)
-            monst.append(popList[selected])
         return monst
 
     def getMonsters(self):
@@ -33,7 +47,7 @@ class Home(Observable, Observer):
     def getNumMonsters(self):
         count = 0
         for monst in self.monsters:
-            if monst not in [ "Person" ]:
+            if monst.getName() not in [ "Person" ]:
                 count = count + 1
         return count
 
