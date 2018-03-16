@@ -12,6 +12,8 @@ class Player(object):
         self.inventory = self.populateWeapons()
         self.hp = randint(100, 125)
         self.attack = randint(10, 20)
+        self.xLoc = 0
+        self.yLoc = 0
 
     def populateWeapons(self):
         hk = HersheyKisses.HersheyKisses() # always have hks
@@ -41,6 +43,12 @@ class Player(object):
     def getHP(self):
         return self.hp
 
+    def getX(self):
+        return self.xLoc
+
+    def getY(self):
+        return self.yLoc
+
     # setters
     def setAttack(self, a):
         self.attack = a
@@ -50,3 +58,9 @@ class Player(object):
 
     def getInventory(self):
         return self.inventory
+
+    def setX(self, xin):
+        self.xLoc = xin
+
+    def setY(self, yin):
+        self.yLoc = yin

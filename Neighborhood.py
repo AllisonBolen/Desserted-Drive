@@ -25,6 +25,9 @@ class Neighborhood(Observer):
             neigh.append(hood)
         return neigh
 
+    def getGridSize(self):
+        return len(self.grid)**2
+
     def getCount(self):
         return self.count
 
