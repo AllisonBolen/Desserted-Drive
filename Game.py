@@ -4,6 +4,7 @@ import Home
 import Player
 import Neighborhood
 from random import *
+import math
 
 
 class Game(object):
@@ -89,6 +90,7 @@ class Game(object):
         print("{mons} did {dam} damage to you.".format(mons=monster.getName(), dam=damage))
         self.gameOver()
         print("Player Health: {}".format(self.player.getHp()))
+
     def getweapons(self, personlist):
         if len(self.player.getInventory()) != 10:
             for p in range(0, (10-len(self.player.getInventory()))):
@@ -99,8 +101,7 @@ class Game(object):
     def getHealth(self,personlist):
         if self.player.getHp() < 100:
             count = 0
-            while(self.player.getHp() < 100 or count != len(personlist)):
-                self.player.setHp(self.player.getHp()+1)
+            for i in range(0, len(personlist)):
                 count = count + 1
             print("You have gained {} health points from the people in the house".format(count))
 
@@ -134,28 +135,27 @@ class Game(object):
             w = input("\nWhat weapon would you like to attack with? type index: <num>")
             weapon = self.player.getInventory()[int(w)]
 
-            attackPoints = self.player.genAttack() * weapon.genModif()
             count = 0
             for monster in self.nbHood.getGrid()[x][y].getMonsters():
+                attackPoints = int(math.ceil(self.player.genAttack() * weapon.genModif()))
                 if monster.getName() != "Person":
                     if weapon.getName() in monster.getWeakTo():
                         # do Damage
                         if monster.getName() == "Zombie" and weapon.getName() == "SourStraws":
                             attackPoints = 2 * attackPoints
-                            monster.setHp(monster.getHp() - attackPoints)
+                            monster.setHp((monster.getHp() - attackPoints))
                         elif monster.getName() == "Ghouls" and weapon.getName() == "NerdBomb":
                             attackPoints = 5 * attackPoints
                             monster.setHp((monster.getHp() - attackPoints))
                         else:
-                            monster.setHp((monster.getHp() - (attackPoints)))
-                    if monster.getHp() <= 0:
-                        self.nbHood.getGrid()[x][y].killMonster(count)
-                        print("You did {ap} damage to {ms} with {ws}".format(ws=weapon.getName(), ap=attackPoints,
-                                                                             ms=monster.getName()))
-                        print("You killed {ms}".format(ms=monster.getName()))
+                            monster.setHp((monster.getHp() - attackPoints))
+                        print("\nYou did {ap} damage to {ms} with {ws}".format(ws=weapon.getName(), ap=attackPoints,
+                                                                         ms=monster.getName()))
+                        if monster.getHp() <= 0:
+                            self.nbHood.getGrid()[x][y].killMonster(count)
+                            print("You killed {ms}".format(ms=monster.getName()))
                     else:
-                        print("You did {ap} damage to {ms} with {ws}".format(ws=weapon.getName(), ap=attackPoints,
-                                                                             ms=monster.getName()))
+                        print("{we} doesnt hurt {m}".format(we=weapon, m=monster.getName()))
                 count = count + 1
             self.player.getInventory()[int(w)].setUses(self.player.getInventory()[int(w)].getUses() - 1)
             if self.player.getInventory()[int(w)].getUses() <= 0:
