@@ -20,7 +20,8 @@ class Game(object):
                    "Monsters": self.pmonsters,
                    "PHP": self.playerHP,
                    "Travel": self.travel,
-                   "Hood": self.printGrid
+                   "Hood": self.printGrid,
+                   "Loc" : self.playerLoc
                    }
 
         print("You need to save your friends!")
@@ -30,16 +31,14 @@ class Game(object):
         while (self.nbHood.getCount()):  # game isnt over
             while (self.turn):  # players turn
                 command = input("What would you like to do?")
+                self.playerLoc()
                 requestCmd = command.split(' ', 1)[0]
                 choices[requestCmd]()
 
 
     def travel(self):
-        dir = input("What direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E")
-        self.player.getX()
-        self.player.getY()
-        print(self.player.getX())
-        print(self.player.getY())
+        dir = input("What direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E\n")
+
         if dir == "N" and self.canMove(dir):
             self.player.setX(self.player.getX()-1)
         elif dir =="S" and self.canMove(dir):
@@ -123,10 +122,10 @@ class Game(object):
     def canMove(self, cmd):
         canMove = True
         if cmd == "N":
-            if (self.player.getY() == 0):
+            if (self.player.getX() == 0):
                 canMove = False
         elif cmd == "W":
-            if (self.player.getX() == 0):
+            if (self.player.getY() == 0):
                 canMove = False
         elif cmd == "S":
             if (self.player.getX() == len(self.nbHood.getGrid()[0])-1):
@@ -166,3 +165,6 @@ class Game(object):
 
     def playerHP(self):
         print('Players HP: {hp}'.format(hp=self.player.getHp()))
+
+    def playerLoc(self):
+        print("x: {x}, y: {y}".format(x=self.player.getX(), y=self.player.getY()))
