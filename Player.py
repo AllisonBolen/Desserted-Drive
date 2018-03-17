@@ -53,7 +53,7 @@ class Player(object):
     def setAttack(self, a):
         self.attack = a
 
-    def setHP(self, hp):
+    def setHp(self, hp):
         self.hp = hp
 
     def getInventory(self):
@@ -64,6 +64,17 @@ class Player(object):
 
     def setY(self, yin):
         self.yLoc = yin
+
+    def appendInventory(self, weapon):
+        if weapon == 'ChocolateBars':
+            cb = ChocolateBars.ChocolateBars()
+            self.inventory.append(cb)
+        elif weapon == 'NerdBomb':
+            nb = NerdBomb.NerdBomb()
+            self.inventory.append(nb)
+        elif weapon == 'SourStraws':
+            ss = SourStraws.SourStraws()
+            self.inventory.append(ss)
 
     def removeWeap(self, index):
 	       del self.inventory[index]
