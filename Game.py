@@ -14,13 +14,15 @@ class Game(object):
         self.over = False
 
     def run(self):
-
         choices = {"Attack": self.doAttack,
                    "Help": self.help,
                    "Inventory": self.inventory,
                    "Monsters": self.pmonsters,
-                   "PHP": self.playerHP
+                   "PHP": self.playerHP,
+                   "Travel": self.travel,
+                   "Hood": self.printGrid
                    }
+
         print("You need to save your friends!")
         print("You have to visit all {} of their houses to and beat the monsters to save them!".format(
             self.nbHood.getGridSize()))
@@ -30,6 +32,25 @@ class Game(object):
                 command = input("What would you like to do?")
                 requestCmd = command.split(' ', 1)[0]
                 choices[requestCmd]()
+
+
+    def travel(self):
+        dir = input("What direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E")
+        self.player.getX()
+        self.player.getY()
+        print(self.player.getX())
+        print(self.player.getY())
+        if dir == "N" and self.canMove(dir):
+            self.player.setX(self.player.getX()-1)
+        elif dir =="S" and self.canMove(dir):
+            self.player.setX(self.player.getX()+1)
+        elif dir == "W" and self.canMove(dir):
+            self.player.setY(self.player.getY()-1)
+        elif dir =="E" and self.canMove(dir):
+            self.player.setY(self.player.getY()+1)
+        else:
+            print("You cant move there.")
+        self.printGrid()
 
     def doAttack(self):
         # print inventory
@@ -77,7 +98,7 @@ class Game(object):
         print("Inventory = all the weapons you hold and their uses left: (weapon name) (#) ")
         print("Attack = lists your inventory and asks for a weapon name")
         print("PHP = prints player HP")
-        print("Travel to new House: \n    North = N \n    South = S \n    West = W \n    East = E")
+        print("Travel: will ask you what direction you want to go in: \n    North = N \n    South = S \n    West = W \n    East = E")
         print("Hood = Print Neighborhood with monsters left in each house")
 
     def printGrid(self):
@@ -102,16 +123,16 @@ class Game(object):
     def canMove(self, cmd):
         canMove = True
         if cmd == "N":
-            if (Player.Y == 0):
+            if (self.player.getY() == 0):
                 canMove = False
         elif cmd == "W":
-            if (Player.X == 0):
+            if (self.player.getX() == 0):
                 canMove = False
         elif cmd == "S":
-            if (Player.X == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
+            if (self.player.getX() == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
                 canMove = False
         elif cmd == "E":
-            if (Player.Y == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
+            if (self.player.getY() == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
                 canMove = False
         return canMove
 
