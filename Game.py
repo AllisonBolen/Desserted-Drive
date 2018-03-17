@@ -129,10 +129,10 @@ class Game(object):
             if (self.player.getX() == 0):
                 canMove = False
         elif cmd == "S":
-            if (self.player.getX() == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
+            if (self.player.getX() == len(self.nbHood.getGrid()[0])-1):
                 canMove = False
         elif cmd == "E":
-            if (self.player.getY() == (int((self.nbHood.getGridSize()) ** (0.5)) - 1)):
+            if (self.player.getY() == len(self.nbHood.getGrid()[0])-1):
                 canMove = False
         return canMove
 
