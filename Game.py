@@ -14,29 +14,28 @@ class Game(object):
         self.over = False
 
     def run(self):
+        print("You need to save your friends!")
+        print("You have to visit all {} of their houses and beat the monsters to save them!".format(
+            self.nbHood.getGridSize()))
         choices = {"attack": self.doAttack,
                    "help": self.help,
                    "inventory": self.inventory,
-                   "Monsters": self.pmonsters,
+                   "monsters": self.pmonsters,
                    "php": self.playerHP,
                    "travel": self.travel,
                    "hood": self.printGrid,
                    "loc" : self.playerLoc,
-                   "endTurn": self.endTurn,
+                   "endturn": self.endTurn,
                    }
 
-        print("You need to save your friends!")
-        print("You have to visit all {} of their houses and beat the monsters to save them!".format(
-            self.nbHood.getGridSize()))
         self.printGrid()
         while (self.nbHood.getCount()):  # game isnt over
             while (self.turn):  # players turn
                 command = input("\nWhat would you like to do? Command: ")
                 requestCmd = command.split(' ', 1)[0]
-                print(requestCmd)
                 try:
-                    choices[requestCmd]()
-                except Exception as e:
+                    choices[requestCmd.lower()]()
+                except KeyError as e:
                     print ("\nThats not a valid command.")
 
             self.doMonstersTurn()
@@ -44,9 +43,13 @@ class Game(object):
 
     def endTurn(self):
         self.turn = False
-    def spit(self):
+
+    def split(self):
+        x = self.player.getX()
+        y = self.player.getY()
         personlist = []
         monlist = []
+
         for l in self.nbHood.getGrid()[x][y].getMonsters():
             if l.getName() == "Person":
                 personlist.append(l)
@@ -74,30 +77,27 @@ class Game(object):
 
             self.turn = True
 
+    def gameOver(self):
+        if self.player.getHp() <= 0:
+            print("\nGAME OVER: \nYou died.")
+            raise SystemExit
 
     def getDamage(self, monlist):
         monster = monlist[randint(0,len(monlist)-1)]
         damage = monster.genAttack()
         self.player.setHp(self.player.getHp()-damage)
-        print("{mons} did {dam} to you.".format(mons=monster.getName(), dam=damage))
-        if self.player.getHp() >= 0:
-            print("\nGAME OVER: \nYou died.")
-            raise SystemExit
-        if len(self.player.getInventory()) != 10 and len(personlist) > 0:
-            for i in range(0, (10-len(self.player.getInventory()))):
-                wep = personlist.getImmune()[randint(0,2)]
-                self.player.appendInventory(wep)
-                print("You have been given {} from a person in the house".format(wep))
-
-    def getweapons(self, peronlist):
+        print("{mons} did {dam} damage to you.".format(mons=monster.getName(), dam=damage))
+        self.gameOver()
+        print("Player Health: {}".format(self.player.getHp()))
+    def getweapons(self, personlist):
         if len(self.player.getInventory()) != 10:
-            for i in range(0, (10-len(self.player.getInventory()))):
-                wep = personlist.getImmune()[randint(0,2)]
+            for p in range(0, (10-len(self.player.getInventory()))):
+                wep = personlist[p].getImmune()[randint(0,2)]
                 self.player.appendInventory(wep)
                 print("You have been given {} from a person in the house".format(wep))
 
     def getHealth(self,personlist):
-        if self.person.getHp() < 100:
+        if self.player.getHp() < 100:
             count = 0
             while(self.player.getHp() < 100 or count != len(personlist)):
                 self.player.setHp(self.player.getHp()+1)
@@ -162,7 +162,8 @@ class Game(object):
                 self.player.removeWeap(int(w))
                 print("\nYou broke {}".format(weapon.getName()))
             self.turn = False
-
+        else:
+            print("\nThere are no monsters to attack here.")
     def help(self):
         print("Inventory = all the weapons you hold and their uses left: (weapon name) (#) ")
         print("Attack = lists your inventory and asks for a weapon name")
@@ -214,10 +215,6 @@ class Game(object):
             count = count + 1
 
     def pmonsters(self):
-        x = self.player.getX()
-        y = self.player.getY()
-        personlist = []
-        monlist = []
         personlist, monlist = self.split()
         print('\nPersons in House: {pnum}'.format(pnum=len(personlist)))
         for p in personlist:
