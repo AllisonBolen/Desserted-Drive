@@ -11,8 +11,8 @@ class Werewolves(NPC):
         NPC.__init__(self)
         self.attack = randint(0, 40)
         self.hp = 200
-        self.candy = ['ChocolateBars', 'SourStraws']  # candy its not hurt by
-        self.special = []
+        self.immune = ['ChocolateBars', 'SourStraws']  # immune its not hurt by
+        self.weakTo = [ 'HersheyKisses', 'NerdBomb']
         self.name = "Werewolves"
 
     # helper funcs

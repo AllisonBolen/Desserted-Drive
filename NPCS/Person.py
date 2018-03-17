@@ -12,8 +12,9 @@ class Person(NPC):
         NPC.__init__(self)
         self.attack = -1
         self.hp = 100
-        self.candy = ['SourStraws','ChocolateBars','NerdBombs'] # random choice to give player maybe?
-        self.special = []
+        self.immune = ['SourStraws','ChocolateBars','NerdBombs'] # random choice to give player maybe?
+        self.weakTo = []
         self.name = "Person"
+
     def genAttack(self):
         return self.attack

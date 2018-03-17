@@ -7,7 +7,7 @@ class Weapon(object):
     def __init__(self):
         self.modif = 0
         self.uses = 0 # million
-        self.name = 'HersheyKisses'
+        self.name = ''
 
     def getUses(self):
         return self.uses

@@ -12,8 +12,8 @@ class Zombie(NPC):
         NPC.__init__(self)
         self.attack = randint(0, 10)
         self.hp = randint(50, 100)
-        self.candy = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBomb'] # candy its not hurt by
-        self.special = ['SourStraws']
+        self.immune = [] # immune its not hurt by
+        self.weakTo = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBomb']
         self.name = "Zombie"
         
     # helper funcs

@@ -40,7 +40,7 @@ class Player(object):
     def getAttack(self):
         return self.attack
 
-    def getHP(self):
+    def getHp(self):
         return self.hp
 
     def getX(self):
@@ -64,3 +64,6 @@ class Player(object):
 
     def setY(self, yin):
         self.yLoc = yin
+
+    def removeWeap(self, index):
+	       del self.inventory[index]

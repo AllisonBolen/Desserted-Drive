@@ -12,8 +12,8 @@ class Ghouls(NPC):
         NPC.__init__(self)
         self.attack = randint(15, 30)
         self.hp = randint(40, 80)
-        self.candy = [] # candy its not hurt by
-        self.special = ['NerdBombs']
+        self.immune = [] # immune its not hurt by
+        self.weakTo = ['ChocolateBars', 'SourStraws', 'HersheyKisses', 'NerdBomb']
         self.name = "Ghouls"
 
     #helper funcs

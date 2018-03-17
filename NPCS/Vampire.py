@@ -11,8 +11,8 @@ class Vampire(NPC):
         NPC.__init__(self)
         self.attack = randint(10, 20)
         self.hp = randint(100, 200)
-        self.candy = ['ChocolateBars']  # candy its not hurt by
-        self.special = []
+        self.immune = ['ChocolateBars']  # immune its not hurt by
+        self.weakTo = ['SourStraws', 'HersheyKisses', 'NerdBomb']
         self.name = "Vampire"
 
     # helper funcs

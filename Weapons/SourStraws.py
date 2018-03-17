@@ -10,7 +10,7 @@ class SourStraws(Weapon):
         Weapon.__init__(self)
         self.modif = uniform(1, 1.75)
         self.uses = 2
-        self.name = "SourStraws"
+        self.name = 'SourStraws'
 
     def genModif(self):
         self.modif = uniform(1, 1.75)

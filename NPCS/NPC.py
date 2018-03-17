@@ -10,8 +10,8 @@ class NPC(Observable):
         Observable.__init__(self)
         self.attack = 0
         self.hp = 0
-        self.candy = []  # candy its not hurt by
-        self.special = []
+        self.immune = []
+        self.weakTo = []
         self.name = ""
         self.alive = True
 
@@ -19,29 +19,29 @@ class NPC(Observable):
     def getAttack(self):
         return self.attack
 
-    def getHP(self):
+    def getHp(self):
         return self.hp
 
-    def getCandy(self):
-        return self.candy
+    def getImmune(self):
+        return self.immune
 
-    def getSpecial(self):
-        return self.special
+    def getWeakTo(self):
+        return self.weakTo
 
     def getName(self):
         return self.name
     # setters
-    def setSpecial(self, special):
-        self.special = special
+    def setWeakTo(self, weakTo):
+        self.weakTo = weakTo
 
     def setAttack(self, a):
         self.attack = a
 
-    def setHP(self, hp):
+    def setHp(self, hp):
         self.hp = hp
 
-    def setCandy(self, c):
-        self.candy = c
+    def setImmune(self, c):
+        self.immune = c
 
     def getAlive(self):
         return self.alive
