@@ -1,8 +1,9 @@
 from random import *
+
 from Weapons.Weapon import *
 
-class NerdBomb(Weapon):
 
+class NerdBomb(Weapon):
     ''' NerdBombs are the best weapon in the game, modifying a player's attack
     by between 3.5 and 5. Unfortunately, they are single use. '''
 

@@ -1,8 +1,9 @@
 from random import *
+
 from Weapons.Weapon import *
 
-class SourStraws(Weapon):
 
+class SourStraws(Weapon):
     ''' SourStraws provide an attack modifier between 1 - 1.75.
     They can be used twice. '''
 

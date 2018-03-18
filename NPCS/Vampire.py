@@ -1,9 +1,9 @@
 from random import *
-from Observable import *
+
 from NPCS.NPC import *
 
-class Vampire(NPC):
 
+class Vampire(NPC):
     ''' Vampires attack at a rate of 10-20 HP per turn. They are not harmed by
     ChocolateBars. Start with 100-200 HP. '''
 

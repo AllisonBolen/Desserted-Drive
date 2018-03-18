@@ -1,6 +1,7 @@
 from random import *
-from NPCS import *
+
 from Weapons import *
+
 
 class Player(object):
     '''This is you. You have a certain amount of HP, randomly generated
@@ -16,7 +17,7 @@ class Player(object):
         self.yLoc = 0
 
     def populateWeapons(self):
-        hk = HersheyKisses.HersheyKisses() # always have hks
+        hk = HersheyKisses.HersheyKisses()  # always have hks
         weaps = [hk]
         for w in range(0, 9):
             popList = ['ChocolateBars', 'NerdBomb', 'SourStraws']
@@ -33,7 +34,7 @@ class Player(object):
         return weaps
 
     def genAttack(self):
-        self.attack = randint(10,20)
+        self.attack = randint(10, 20)
         return self.attack
 
     # getters
@@ -77,4 +78,4 @@ class Player(object):
             self.inventory.append(ss)
 
     def removeWeap(self, index):
-	       del self.inventory[index]
+        del self.inventory[index]

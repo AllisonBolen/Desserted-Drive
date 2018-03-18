@@ -1,9 +1,9 @@
 from random import *
-from Observable import *
+
 from NPCS.NPC import *
 
-class Werewolves(NPC):
 
+class Werewolves(NPC):
     ''' Werewolves attack at a rate of 0-40 HP per turn.
     They are not harmed by ChocolateBars or SourStraws. Start with 200 HP. '''
 
@@ -12,7 +12,7 @@ class Werewolves(NPC):
         self.attack = randint(0, 40)
         self.hp = 200
         self.immune = ['ChocolateBars', 'SourStraws']  # immune its not hurt by
-        self.weakTo = [ 'HersheyKisses', 'NerdBomb']
+        self.weakTo = ['HersheyKisses', 'NerdBomb']
         self.name = "Werewolves"
 
     # helper funcs

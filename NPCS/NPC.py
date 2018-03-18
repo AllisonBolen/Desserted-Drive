@@ -1,9 +1,6 @@
-from random import *
 from Observable import *
-from NPCS.NPC import *
 
 class NPC(Observable):
-
     ''' Base class '''
 
     def __init__(self):
@@ -30,6 +27,10 @@ class NPC(Observable):
 
     def getName(self):
         return self.name
+
+    def getAlive(self):
+        return self.alive
+
     # setters
     def setWeakTo(self, weakTo):
         self.weakTo = weakTo
@@ -42,9 +43,6 @@ class NPC(Observable):
 
     def setImmune(self, c):
         self.immune = c
-
-    def getAlive(self):
-        return self.alive
 
     def setAlive(self, state):
         self.alive = state

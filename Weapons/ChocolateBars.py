@@ -1,8 +1,9 @@
 from random import *
+
 from Weapons.Weapon import *
 
-class ChocolateBars(Weapon):
 
+class ChocolateBars(Weapon):
     ''' ChocolateBars modify the players attack by between 2 - 2.4.
     They are usable 4 times. '''
 
