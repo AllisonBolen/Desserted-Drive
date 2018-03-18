@@ -69,10 +69,10 @@ class Player(object):
         if weapon == 'ChocolateBars':
             cb = ChocolateBars.ChocolateBars()
             self.inventory.append(cb)
-        elif weapon == 'NerdBomb':
+        if weapon == 'NerdBombs':
             nb = NerdBomb.NerdBomb()
             self.inventory.append(nb)
-        elif weapon == 'SourStraws':
+        if weapon == 'SourStraws':
             ss = SourStraws.SourStraws()
             self.inventory.append(ss)
 

@@ -71,6 +71,7 @@ class Game(object):
                 print("There are no monsters to attack you.")
 
             if len(personlist) > 0:
+                print("\nHERERERE with {} people\n".format(len(personlist)))
                 self.getweapons(personlist)
                 self.getHealth(personlist)
             else:
@@ -87,22 +88,20 @@ class Game(object):
         monster = monlist[randint(0,len(monlist)-1)]
         damage = monster.genAttack()
         self.player.setHp(self.player.getHp()-damage)
-        print("{mons} did {dam} damage to you.".format(mons=monster.getName(), dam=damage))
+        print("\n{mons} did {dam} damage to you.\n".format(mons=monster.getName(), dam=damage))
         self.gameOver()
         print("Player Health: {}".format(self.player.getHp()))
 
-    def getweapons(self, personlist):
-        if len(self.player.getInventory()) != 10:
-            for p in range(0, (10-len(self.player.getInventory()))):
-                wep = personlist[p].getImmune()[randint(0,2)]
-                self.player.appendInventory(wep)
-                print("You have been given {} from a person in the house".format(wep))
+    def getweapons(self, personlist): # adds one item tothe listif its not ten
+        if len(self.player.getInventory()) < 10:
+            wep = personlist[0].getImmune()[randint(0,2)]
+            self.player.appendInventory(wep)
+            print("You have been given {} from a person in the house".format(wep))
 
     def getHealth(self,personlist):
-        if self.player.getHp() < 100:
-            count = 0
-            for i in range(0, len(personlist)):
-                count = count + 1
+        if self.player.getHp() < 125:
+            count = len(personlist)
+            self.player.setHp(self.player.getHp()+count)
             print("You have gained {} health points from the people in the house".format(count))
 
     def travel(self):
@@ -155,7 +154,7 @@ class Game(object):
                             self.nbHood.getGrid()[x][y].killMonster(count)
                             print("You killed {ms}".format(ms=monster.getName()))
                     else:
-                        print("{we} doesnt hurt {m}".format(we=weapon, m=monster.getName()))
+                        print("{we} doesnt hurt {m}".format(we=weapon.getName(), m=monster.getName()))
                 count = count + 1
             self.player.getInventory()[int(w)].setUses(self.player.getInventory()[int(w)].getUses() - 1)
             if self.player.getInventory()[int(w)].getUses() <= 0:
@@ -164,6 +163,7 @@ class Game(object):
             self.turn = False
         else:
             print("\nThere are no monsters to attack here.")
+
     def help(self):
         print("Inventory = all the weapons you hold and their uses left: (weapon name) (#) ")
         print("Attack = lists your inventory and asks for a weapon name")
