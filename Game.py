@@ -106,7 +106,7 @@ class Game(object):
             print("You have gained {} health points from the people in the house".format(count))
 
     def travel(self):
-        dir = input("\nWhat direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E\n Direction: ")
+        dir = input("\nWhat direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E\n Direction: ").upper()
 
         if dir == "N" and self.canMove(dir):
             self.player.setX(self.player.getX()-1)
