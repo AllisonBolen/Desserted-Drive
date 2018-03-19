@@ -13,9 +13,8 @@ class Game(object):
         self.over = False
 
     def run(self):
-        print("You need to save your friends!")
-        print("You have to visit all {} of their houses and beat the monsters to save them!".format(
-            self.nbHood.getGridSize()))
+        print("\nYou need to save your friends!")
+        print("\nYou have to visit all {hc} of their houses and beat all {mc} the monsters to save them!".format(hc=self.nbHood.getGridSize(), mc= self.nbHood.getCount()))
         choices = {"attack": self.doAttack,
                    "help": self.help,
                    "inventory": self.inventory,
@@ -25,20 +24,23 @@ class Game(object):
                    "hood": self.printGrid,
                    "loc": self.playerLoc,
                    "endturn": self.endTurn,
+                   "globalcount": self.globalCount,
                    }
 
         self.printGrid()
         while (self.nbHood.getCount()):  # game isnt over
             while (self.turn):  # players turn
-                command = input("What would you like to do? Command: ")
+
+                command = input("\nWhat would you like to do? Command: ")
                 requestCmd = command.split(' ', 1)[0]
                 try:
                     choices[requestCmd.lower()]()
                 except KeyError as e:
                     print("Thats not a valid command.")
-
+            print("\n--------------------- Monsters Turn ---------------------\n")
             self.doMonstersTurn()
-        print("YOU WIN: ZERO MONSTERS LEFT!")
+            print("\n---------------------- Heros Turn ----------------------\n")
+        print("\nYOU WIN: ZERO MONSTERS LEFT!")
 
     def endTurn(self):
         self.turn = False
@@ -59,7 +61,7 @@ class Game(object):
     def doMonstersTurn(self):
         x = self.player.getX()
         y = self.player.getY()
-        print("Player Health: {}".format(self.player.getHp()))
+        self.playerHP()
         if len(self.nbHood.getGrid()[x][y].getMonsters()) > 0:
             # are they people or are they monsters
             personlist, monlist = self.split()
@@ -69,11 +71,11 @@ class Game(object):
                 print("There are no monsters to attack you.")
 
             if len(personlist) > 0:
-                self.getweapons(personlist)
                 self.getHealth(personlist)
+                self.getweapons(personlist)
             else:
                 print("There are no people to help you.")
-
+            self.playerHP()
             self.turn = True
 
     def gameOver(self):
@@ -85,15 +87,15 @@ class Game(object):
         monster = monlist[randint(0, len(monlist) - 1)]
         damage = monster.genAttack()
         self.player.setHp(self.player.getHp() - damage)
-        print("{mons} did {dam} damage to you.".format(mons=monster.getName(), dam=damage))
+        print("\n{mons} did {dam} damage to you.".format(mons=monster.getName(), dam=damage))
         self.gameOver()
-        print("Player Health: {}".format(self.player.getHp()))
+
 
     def getweapons(self, personlist):  # adds one item tothe listif its not ten
         if len(self.player.getInventory()) < 10:
             wep = personlist[0].getImmune()[randint(0, 2)]
             self.player.appendInventory(wep)
-            print("You have been given {} from a person in the house".format(wep))
+            print("\nYou have been given {} from a person in the house".format(wep))
 
     def getHealth(self, personlist):
         if self.player.getHp() < 125:
@@ -103,7 +105,7 @@ class Game(object):
 
     def travel(self):
         dir = input(
-            "\nWhat direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E\n Direction: ").upper()
+            "\nWhat direction do you want to go: \n    North = N \n    South = S \n    West = W \n    East = E\n \nDirection: ").upper()
 
         if dir == "N" and self.canMove(dir):
             self.player.setX(self.player.getX() - 1)
@@ -114,23 +116,24 @@ class Game(object):
         elif dir == "E" and self.canMove(dir):
             self.player.setY(self.player.getY() + 1)
         else:
-            print("You cant move there.")
+            print("\nYou cant move there.")
         self.printGrid()
 
     def doAttack(self):
         personlist, monlist = self.split()
         if len(monlist) > 0:
             # print inventory
-            print("\n--------------------------------------------------------------")
             self.inventory()
             # print monsters
-            print("\n--------------------------------------------------------------")
             self.pmonsters()
-            print("\n--------------------------------------------------------------")
+            print("\n---------------------------- Attack -----------------------------")
             x = self.player.getX()
             y = self.player.getY()
-            w = input("What weapon would you like to attack with? type index: <num>")
-            weapon = self.player.getInventory()[int(w)]
+            try:
+                w = int(input("What weapon would you like to attack with? Type index: "))
+            except ValueError as e:
+                print("Thats not a valid command.")
+            weapon = self.player.getInventory()[w]
 
             count = 0
             for monster in self.nbHood.getGrid()[x][y].getMonsters():
@@ -146,23 +149,24 @@ class Game(object):
                             monster.setHp((monster.getHp() - attackPoints))
                         else:
                             monster.setHp((monster.getHp() - attackPoints))
-                        print("You did {ap} damage to {ms} with {ws}".format(ws=weapon.getName(), ap=attackPoints,
+                        print("\nYou did {ap} damage to {ms} with {ws}".format(ws=weapon.getName(), ap=attackPoints,
                                                                              ms=monster.getName()))
                         if monster.getHp() <= 0:
                             self.nbHood.getGrid()[x][y].killMonster(count)
                             print("You killed {ms}".format(ms=monster.getName()))
                     else:
-                        print("{we} doesnt hurt {m}".format(we=weapon.getName(), m=monster.getName()))
+                        print("\n{we} doesnt hurt {m}".format(we=weapon.getName(), m=monster.getName()))
                 count = count + 1
             self.player.getInventory()[int(w)].setUses(self.player.getInventory()[int(w)].getUses() - 1)
             if self.player.getInventory()[int(w)].getUses() <= 0:
                 self.player.removeWeap(int(w))
-                print("You broke {}".format(weapon.getName()))
+                print("\nYou broke {}".format(weapon.getName()))
             self.turn = False
         else:
-            print("There are no monsters to attack here.")
+            print("\nThere are no monsters to attack here.")
 
     def help(self):
+        print("\n--------------------------- Help Menu -----------------------------------")
         print("Inventory = all the weapons you hold and their uses left: (weapon name) (#) ")
         print("Attack = lists your inventory and asks for a weapon name")
         print("PHP = prints player HP")
@@ -171,9 +175,10 @@ class Game(object):
         print("Hood = Print Neighborhood with monsters left in each house")
 
     def printGrid(self):
+        print("\n--------------------------- Neighborhood -----------------------------------")
         dim = int((self.nbHood.getGridSize()) ** (0.5))
-        header = "   "
-        sep = "---"
+        header = "\t   "
+        sep = "\t---"
         for i in range(0, dim):
             header = header + "{} ".format(i)
             sep = sep + "--"
@@ -187,7 +192,7 @@ class Game(object):
                     numMs = "{nums} P".format(nums=numMs)
                 else:
                     numMs = "{nums} {monst}".format(nums=numMs, monst=self.nbHood.getGrid()[i][j].getNumMonsters())
-            print("{index}|{num} ".format(index=i, num=numMs))
+            print("\t{index}|{num} ".format(index=i, num=numMs))
 
     def canMove(self, cmd):
         canMove = True
@@ -207,27 +212,29 @@ class Game(object):
 
     def inventory(self):
         count = 0
+        print("\n--------------------------- Inventory -----------------------------------")
         for w in self.player.getInventory():
             n = w.getName()
             u = w.getUses()
-            print('Inventory Slot: {num}, Weapon: {name}, Uses: {uses}'.format(num=count, name=n, uses=u))
+            print('\tInventory Slot: {num}, Weapon: {name}, Uses: {uses}'.format(num=count, name=n, uses=u))
             count = count + 1
 
     def pmonsters(self):
+        print("\n--------------------------- Occupants -----------------------------------")
         personlist, monlist = self.split()
-        print('\nPersons in House: {pnum}'.format(pnum=len(personlist)))
+        print('Persons in House: {pnum}'.format(pnum=len(personlist)))
         for p in personlist:
-            print('Name: {pname}, HP: {php}'.format(pname=p.getName(), php=p.getHp()))
+            print('\tName: {pname}, HP: {php}'.format(pname=p.getName(), php=p.getHp()))
 
         print('\nMonsters in House: {mnum}'.format(mnum=len(monlist)))
         for m in monlist:
-            print('Name: {mname}, HP: {mhp}'.format(mname=m.getName(), mhp=m.getHp()))
+            print('\tName: {mname}, HP: {mhp}'.format(mname=m.getName(), mhp=m.getHp()))
 
     def playerHP(self):
-        print('\nPlayers HP: {hp}'.format(hp=self.player.getHp()))
+        print('\nHeros HP: {hp}'.format(hp=self.player.getHp()))
 
     def playerLoc(self):
         print("\nx: {x}, y: {y}".format(x=self.player.getX(), y=self.player.getY()))
 
     def globalCount():
-        print("Global Monster Count: {}".format(nbHood.getCount()))
+        print("\nGlobal Monster Count: {}".format(nbHood.getCount()))
