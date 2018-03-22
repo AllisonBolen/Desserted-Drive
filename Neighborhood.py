@@ -7,12 +7,27 @@ class Neighborhood(Observer):
      one another in a grid. The size of the grid is set when the
      neighborhood is created.
         '''
-
+    
+    '''
+    Initializes the Observer and creaets the grid and the count for the number of monsters
+    Param:
+      gridSize - The size of the grid
+    return:
+      nothing
+    '''
     def __init__(self, gridSize):
         Observer.__init__(self)
         self.count = 0  # mosnter count of all the houses
         self.grid = self.populateHood(gridSize)  # need to popualte with houses in each grid space
 
+    '''
+    Populates the neighborhood with homes and puts monsters in those homes while increasing 
+    the count.
+    Param:
+      size - the size of the grid
+    return:
+      neigh - returns the grid with the homes and monsters in it.
+    '''
     def populateHood(self, size):
         neigh = []
         for i in range(0, size):
@@ -25,6 +40,11 @@ class Neighborhood(Observer):
             neigh.append(hood)
         return neigh
 
+    '''
+    Getter for the Grid size
+    return:
+      
+    '''
     def getGridSize(self):
         return len(self.grid) ** 2
 
