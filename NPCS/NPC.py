@@ -3,6 +3,7 @@ from Observable import *
 ''' Base NPC: The base npc class is the parent to the mosnters that extend it.
 They share the getters and setters and a base constructor. It extends the Observable
 class and this passes those methods down too. '''
+
 class NPC(Observable):
 
     ''''
@@ -25,15 +26,19 @@ class NPC(Observable):
     ''' returns the monsters attack as an integer'''
     def getAttack(self):
         return self.attack
+
     ''' returns the monsters Hp as an integer'''
     def getHp(self):
         return self.hp
+
     '''returns the list of strings of names of the weapons the monster is weak to'''
     def getImmune(self):
         return self.immune
+
     ''' returns the list of the names of weapons the monster is weak to'''
     def getWeakTo(self):
         return self.weakTo
+
     '''returns the name of the monster as a string'''
     def getName(self):
         return self.name

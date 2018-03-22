@@ -1,5 +1,6 @@
+''' base weapons class. This is the main weapon class that the weapon objects extend.
+    The methods are usable on the objects that extend here. the player has a lsit of weapons to attack with'''
 class Weapon(object):
-    ''' base weapons class. '''
 
     '''
     Initializes a weapon by giving it a name, it's uses, and it's modif
@@ -7,7 +8,7 @@ class Weapon(object):
       nothing
     '''
     def __init__(self):
-        self.modif = 0  #damage modifier 
+        self.modif = 0  #damage modifier
         self.uses = 0  #the amount of uses
         self.name = ''  #The name of weapon
 
@@ -53,7 +54,7 @@ class Weapon(object):
         self.modif = modif
 
     '''
-    Generates the damage modifier. This will be used in other classes to 
+    Generates the damage modifier. This will be used in other classes to
       tell how much damage a curtain weapon will do.
     '''
     def genModif(self):
