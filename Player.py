@@ -1,21 +1,27 @@
 from random import *
-
 from Weapons import *
 
-
+'''This is you. You have a certain amount of HP, randomly generated
+between 100 - 125. You also have an attack value, between 10-20.
+You are able to hold 10 weapons; these are randomly generated and added
+to your inventory when you are created.'''
 class Player(object):
-    '''This is you. You have a certain amount of HP, randomly generated
-    between 100 - 125. You also have an attack value, between 10-20.
-    You are able to hold 10 weapons; these are randomly generated and added
-    to your inventory when you are created.'''
 
+    ''' The constructor for the player classself.
+        creates an inventory list
+        creates the hp for the player randomly
+        creates the attack randomly
+        sets the x loctaion to 0
+        sets the y location to 0
+    '''
     def __init__(self):
         self.inventory = self.populateWeapons()
-        self.hp = randint(100, 125)
-        self.attack = randint(10, 20)
+        self.hp = randint(300, 450)
+        self.attack = randint(30, 45)
         self.xLoc = 0
         self.yLoc = 0
 
+    ''' This populates the list of weapons for the palyer and returns it to the constructor. '''
     def populateWeapons(self):
         hk = HersheyKisses.HersheyKisses()  # always have hks
         weaps = [hk]
@@ -32,10 +38,6 @@ class Player(object):
                 ss = SourStraws.SourStraws()
                 weaps.append(ss)
         return weaps
-
-    def genAttack(self):
-        self.attack = randint(10, 20)
-        return self.attack
 
     # getters
     def getAttack(self):
@@ -66,6 +68,12 @@ class Player(object):
     def setY(self, yin):
         self.yLoc = yin
 
+    ''' randomly selects a number to attack with '''
+    def genAttack(self):
+        self.attack = randint(30, 45)
+        return self.attack
+
+    ''' appends the weapons to the players inventory '''
     def appendInventory(self, weapon):
         if weapon == 'ChocolateBars':
             cb = ChocolateBars.ChocolateBars()
@@ -77,5 +85,6 @@ class Player(object):
             ss = SourStraws.SourStraws()
             self.inventory.append(ss)
 
+    ''' removes the weapon from the players inventory '''
     def removeWeap(self, index):
         del self.inventory[index]
