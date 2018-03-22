@@ -43,22 +43,51 @@ class Neighborhood(Observer):
     '''
     Getter for the Grid size
     return:
-      
+      len(self.grid)**2 - len of the grid size squarerooted   
     '''
     def getGridSize(self):
         return len(self.grid) ** 2
 
+    '''
+    Getter for the count, or the number of monsters left.
+    return:
+      count - number of monsters left in game
+    '''
     def getCount(self):
         return self.count
 
+    '''
+    Setter sets the count to an integer.
+    Param:
+      num - an integer value
+    return:
+      nothing
+    '''
     def setCount(self, num):
         self.count = num
 
+    '''
+    Getter for grid.
+    return:
+      grid - how big the grid is and what it looks like
+    '''
     def getGrid(self):
         return self.grid
 
+    '''
+    Setter for Grid.
+    Param:
+      g - an integer value
+    return:
+      nothing
+    '''
     def setGrid(self, g):
         self.grid = g
 
+    '''
+    This method updates the count when the number of monsters changes
+    return:
+      nothing
+    '''
     def update(self):
         self.count = self.count - 1

@@ -81,6 +81,8 @@ class Home(Observable, Observer):
     '''
     This method removes the monster and then replaces it with a Person
     then updates the house
+    Param:
+      monstIndex - index of monster
     return:
       nothing
     '''
@@ -92,6 +94,8 @@ class Home(Observable, Observer):
     '''
     This method creates a person and adds it to the house. It will insert the Person
     at the monster's index.
+    Param:
+      indx - monsters position
     return:
       nothing
     '''
